@@ -1,4 +1,11 @@
-
+/**
+ * @author      Oksana Korol
+ * @version     0.8                        
+ * @since       2012-11-13   
+ * 
+ * Method for finding frequent patters (itemsets) in transaction data
+ * Based on Apriori algorithm by R Agrawal, R Srikant (Proc. 20th Int. Conf. Very Large Data, 1994)
+ */
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
