@@ -1,4 +1,10 @@
-
+/**
+ * @author      Oksana Korol 
+ * @version     0.8                        
+ * @since       2013-01-16   
+ * 
+ * K-Means Clustering example.
+ */
 
 import java.util.Arrays;
 
@@ -64,17 +70,17 @@ public class KMeansClustering {
 	}
 
 
-	/* Calculates the square of Euclidian distance between two data points.
+	/* Calculates the square of Euclidean distance between two data points.
 	 * The formula is as follows:
 	 * 	For points A and B with n coordinates, D = (coordinate_1(A) - coordinate_1(B))^2 + ... + (coordinate_n(A) - coordinate_n(B))^2
 	 *  Example. For for two points on a plain (n=2). Point1: (2,4), point2: (3, -1). D = (2-3)^2 + (4 -(-1))^2 = 1 + 25 = 26.
 	 *  
-	 * Note that Euclidian distance takes a square root from the above formula.
+	 * Note that Euclidean distance takes a square root from the above formula.
 	 * 
 	 */
 	public double calculateSquaredEuclidianDistance(double[] pointA, double[] pointB) throws Exception{
 		if (pointA.length != pointB.length){
-			throw new Exception("Can not calculate Euclidian distance: point should have the same dimention.");
+			throw new Exception("Can not calculate Euclidean distance: point should have the same dimention.");
 		}
 		double result = 0.0;
 		
@@ -128,13 +134,7 @@ public class KMeansClustering {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		double[][] data = new double[][]{
-//				{1,1},
-//				{2,1},
-//				{4,3},
-//				{5,4}
-//		};
-
+/*
 		double[][] data = new double[][]{
 				{2, 1}, 
 				{1, 2}, 
@@ -146,26 +146,35 @@ public class KMeansClustering {
 				{3,-2}, 
 				{6, 0}
 		};
-//		double[][] data = new double[][]{
-//				{2, 1}, 
-//				{6, 1}, 
-//				{2,-3}, 
-//				{3,-2}, 
-//				{1, 2}, 
-//				{2, 3}, 
-//				{5, 1}, 
-//				{3, 3}, 
-//				{6, 0}
-//		};
+*/
+		double[][] data = new double[][]{
+				{2, 1}, 
+				{6, 1}, 
+				{2,-3}, 
+				{3,-2}, 
+				{1, 2}, 
+				{2, 3}, 
+				{5, 1}, 
+				{3, 3}, 
+				{6, 0}
+		};
 		
 		int numberOfClusters = 3;
 		KMeansClustering kMeans = new KMeansClustering(data, numberOfClusters);
 		
 		try {
 			int[] result = kMeans.findClusters();
+			
+			System.out.println("Instance\tCluster");
 			for (int i = 0; i < result.length; i++) {
-				System.out.println("\t" + result[i]);
+				System.out.print("(");
+				for (int j = 0; j < data[0].length; j++) {
+					System.out.print(data[i][j]);
+					if (j<(data[0].length-1)) System.out.print(", ");
+				}
+				System.out.println(")\t" + result[i]);
 			}
+			
 		} catch (Exception e) {
 			
 			e.printStackTrace();
